@@ -1,0 +1,8 @@
+<launch>
+  <node pkg="image_transporter" type="publisher" name="publisher">
+    <param name="publisher" value="image"/>
+  </node>
+  <node pkg="image_transporter" type="subscriber" name="subscriber">
+    <param name="subscriber" value="image"/>
+  </node>
+</launch>

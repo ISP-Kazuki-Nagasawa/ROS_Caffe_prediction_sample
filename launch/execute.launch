@@ -1,0 +1,15 @@
+<launch>
+  <node pkg="image_transporter" type="publisher" name="publisher">
+    <param name="publisher" value="image"/>
+  </node>
+  <!-- node pkg="caffe_predictor" type="predictor_simple.py" name="caffe_predictor_py" -->
+  <!-- node pkg="caffe_predictor" type="predictor_simple_inner_caffe.py" name="caffe_predictor_py" -->
+  <!-- node pkg="caffe_predictor" type="predictor_thread.py" name="caffe_predictor_py" -->
+  <node pkg="caffe_predictor" type="predictor_thread_inner_caffe.py" name="caffe_predictor_py">
+    <param name="subscriber" value="image" />
+    <param name="caffe_root" value="/opt/caffe" />
+    <param name="model_path" value="$(find caffe_predictor)/data/snapshot.caffemodel" />
+    <param name="deploy_path" value="$(find caffe_predictor)/data/deploy.prototxt" />
+    <param name="gpu_id" value="1" />
+  </node>
+</launch>
